@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import jsPDF from 'jspdf';
 import programs from './programs.json';
+import sngcPrograms from './sngc_programs.json';
 import './index.css';
 
 function App() {
@@ -11,6 +12,68 @@ function App() {
     prog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     prog.code.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const downloadSNGCPDF = () => {
+    const doc = new jsPDF();
+    let yPos = 20;
+    const margin = 20;
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const pageHeight = doc.internal.pageSize.getHeight();
+
+    // Title
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(22);
+    doc.setTextColor(30, 41, 59);
+    doc.text("SNGC Nattika", margin, yPos);
+    yPos += 10;
+    
+    doc.setFontSize(14);
+    doc.setFont("helvetica", "bold");
+    doc.setTextColor(100, 116, 139);
+    doc.text("PHP (Program List for the Academic Year 2022-23)", margin, yPos);
+    yPos += 15;
+
+    sngcPrograms.forEach((prog, index) => {
+      // Title block
+      const titleText = `${prog.id}. ${prog.title}`;
+      if (prog.filename) {
+        doc.setFont("helvetica", "italic");
+        doc.setFontSize(10);
+        doc.text(prog.filename, pageWidth - margin - 40, yPos);
+      }
+      
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(13);
+      doc.setTextColor(30, 41, 59);
+      
+      if (yPos > pageHeight - 30) {
+        doc.addPage();
+        yPos = 20;
+      }
+      
+      doc.text(titleText, margin, yPos);
+      yPos += 8;
+
+      // Code block
+      doc.setFont("courier", "normal");
+      doc.setFontSize(9);
+      doc.setTextColor(51, 65, 85);
+      
+      const splitCode = doc.splitTextToSize(prog.code, pageWidth - (2 * margin));
+      
+      splitCode.forEach(line => {
+        if (yPos > pageHeight - 15) {
+          doc.addPage();
+          yPos = 20;
+        }
+        doc.text(line, margin, yPos);
+        yPos += 4;
+      });
+      yPos += 12;
+    });
+
+    doc.save("SNGC_PHP_Lab_2022-23.pdf");
+  };
 
   const downloadAllPDF = () => {
     const doc = new jsPDF();
@@ -111,13 +174,21 @@ function App() {
       </header>
 
       <div className="download-section">
+        <button className="download-btn secondary" onClick={downloadSNGCPDF}>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Download SNGC PHP (22-23) PDF
+        </button>
         <button className="download-btn" onClick={downloadAllPDF}>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
             <polyline points="7 10 12 15 17 10"></polyline>
             <line x1="12" y1="15" x2="12" y2="3"></line>
           </svg>
-          Download Both (Java & PHP PDF)
+          Download All (Java & PHP)
         </button>
       </div>
 
@@ -131,7 +202,7 @@ function App() {
         <input 
           type="text" 
           className="search-input" 
-          placeholder={`Search ${category} programs...`}
+          placeholder={`Search ${category === 'php_sngc' ? 'SNGC PHP' : category.toUpperCase()} programs...`}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
@@ -149,6 +220,12 @@ function App() {
           onClick={() => { setCategory('php'); setSearchTerm(''); }}
         >
           PHP Programs
+        </button>
+        <button 
+          className={`tab-btn ${category === 'php_sngc' ? 'active' : ''}`}
+          onClick={() => { setCategory('php_sngc'); setSearchTerm(''); }}
+        >
+          PHP (SNGC 22-23)
         </button>
       </div>
 

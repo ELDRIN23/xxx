@@ -262,6 +262,16 @@ pre {
   transform: translateY(0);
 }
 
+.download-btn.secondary {
+  background: #2563eb;
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+}
+
+.download-btn.secondary:hover {
+  background: #1d4ed8;
+  box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+}
+
 .download-btn svg {
   stroke-width: 2.5px;
 }

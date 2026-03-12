@@ -1,0 +1,62 @@
+[
+  {
+    "id": "1",
+    "title": "Armstrong Number",
+    "filename": "Pgm1.php",
+    "code": "<html>\n<title>Armstrong Number</title>\n<body>\n<form method=\"post\">\nEnter the Number:\n<input type=\"number\" name=\"number\">\n<input type=\"submit\" value=\"Submit\">\n</form>\n<?php\nif($_POST) {\n$number=$_POST['number'];\n$a=$number;\n$sum=0;\nwhile($a !=0)\n{\n$rem=$a%10;\n$sum=$sum+($rem*$rem*$rem);\n$a=$a/10;\n}\nif($number==$sum)\n{\necho\"Yes $number an Armstrong number\";\n}\nelse\n{\necho(\"$number is not an Armstrong\");\n}\n}\n?>\n</body>\n</html>"
+  },
+  {
+    "id": "2",
+    "title": "Fibonacci Series",
+    "filename": "Pgm2.php",
+    "code": "<html>\n<title>Fibonacci Series </title>\n<body>\n<form method=\"post\">\nEnter Number Limit:\n<input type=\"text\" name=\"number\"/>\n<button type=\"submit\">Check</button>\n</form>\n<?php\nif($_POST)\n{\n$num=$_POST['number'];\n$count=0;\n$f1=0;\n$f2=1;\nif($num==0)\n{\necho\"0\";\n}\nelse\n{\necho $f1.\"<br>\";\n// SNGC, NATTIKA\necho $f2.\"<br>\";\nwhile($f2+$f1<=$num)\n{\n$f3=$f2+$f1;\necho $f3.\"<br>\";\n$f1=$f2;\n$f2=$f3;\n}\n}\n}\n?>\n</body>\n</html>"
+  },
+  {
+    "id": "3",
+    "title": "Biodata (HTML & PHP)",
+    "filename": "Pgm3.html / biodata.php",
+    "code": "<!-- Pgm3.html -->\n<html>\n<head>\n<title>Biodata</title>\n</head>\n<body>\n<form method=post action=biodata.php enctype=\"multipart/form-data\">\n<table align=\"center\" bgcolor=\"eeeeee\">\n<tr> <td colspan=2 align=center>\n<h2>FILL IN YOUR PERSONAL DATA<br>TO PREPARE YOUR CURRICULAM VITAE</h2><hr>\n</td> </tr>\n<tr>\n<td>Name</td>\n<td><input type=text name=name required></td>\n</tr>\n<tr>\n<td>Father's Name</td>\n<td><input type=text name=fname required></td>\n</tr>\n<tr>\n<td>Address for Communication</td>\n<td><textarea name=address cols=40 rows=5 equired></textarea></td>\n</tr>\n<tr>\n<td>Mobile Number</td>\n<td><input type=text name=mobile required></td>\n</tr>\n<tr>\n<td>Email ID</td>\n<td><input type=text name=email required></td>\n</tr>\n<tr>\n<td>Qualification(List from Highest to Lowest)</td>\n<td><textarea name=qualification cols=40 rows=5 required></textarea><br></td>\n</tr>\n<tr>\n<td>Experience(List from Latest to Oldest)</td>\n<td><textarea name=experience cols=40 rows=5 required></textarea></td>\n</tr>\n<tr>\n<td>Awards/Achivements/Positions held(List from Latest to Oldest)</td>\n<td><textarea name=awards cols=40 rows=5 required></textarea><br></td>\n</tr>\n<tr>\n<td>Upload Your Photograph</td>\n<td><input type=file name=photo id=photo required></td>\n</tr>\n<tr>\n<td colspan=2 align=center><br><br><input type=submit name=submit\nvalue=Submit><br><br></td>\n</tr>\n</table>\n</form>\n</body>\n</html>\n\n<!-- biodata.php -->\n<?php\n$fname1=str_replace('','',$_FILES['photo']['name']);\nmove_uploaded_file($_FILES['photo']['tmp_name'],'$fname1');\necho\"\n<table align=center >\n<tr align=center>\n<td colspan=2 align=center>\n<h1>CURRICULUM VITAE</h1><hr>\n</td>\n</tr>\n<tr>\n<td colspan=2 align=center>\n<img src='$fname1' alt='Photograph Missing' width=100 height=100>\n</td>\n</tr>\n<tr>\n<td colspan=2 align=center>\n<h2>$_POST[name]</h2>\n</td>\n</tr>\n<tr>\n<td >Name</td>\n<td >$_POST[name]</td>\n</tr>\n<tr>\n<td >Name of Father</td>\n<td >$_POST[fname]</td>\n</tr>\n<tr>\n<td >Address</td>\n<td >$_POST[address]</td>\n</tr>\n<tr>\n<td >Mobile Number</td>\n<td >$_POST[mobile]</td>\n</tr>\n<tr>\n<td >Email Address</td>\n<td >$_POST[email]</td>\n</tr>\n<tr>\n<td>Qualification</td>\n<td >$_POST[qualification]</td>\n</tr>\n<tr>\n<td >Work Experience</td>\n<td >$_POST[experience]</td>\n</tr>\n<tr>\n<td >Awards&achievements</td>\n<td >$_POST[awards]</td>\n</tr>\n</table>\";\n?>"
+  },
+  {
+    "id": "4",
+    "title": "String Reverse",
+    "filename": "Pgm4.html / Pgm4.php",
+    "code": "<!-- Pgm4.html -->\n<html>\n<title>String Reverse</title>\n<body>\n<form action=\"tes.php\" method=\"post\">\nEnter the Number:\n<input type=\"text\" name=name>\n<input type=\"submit\" value=\"Submit\">\n</form>\n</body>\n</html>\n\n<!-- Pgm4.php -->\n<?php\n$string=$_POST['name'];\n$length = strlen($string);\necho \"Given String is: $string <br>\";\necho \"Reverse of String is: \";\nfor ($i=($length-1) ; $i >= 0 ; $i--)\n{\necho $string[$i];\n}\n?>"
+  },
+  {
+    "id": "5",
+    "title": "Perfect / Abundant / Deficient Number",
+    "filename": "Pgm5.php",
+    "code": "<html>\n<head>\n<title>Find Perfect number</title>\n</head>\n<body>\nEnter a Number\n<form method=\"post\">\n<input type=\"text\" name=\"number\"/>\n<button type=\"submit\">Check</button>\n</form>\n</body>\n</html>\n<?php\nif($_POST)\n{\n$num=$_POST['number'];\n$i=1;\n$sum=0;\nwhile($i<$num)\n{\nif($num%$i==0)\n{\n$sum=$sum+$i;\n}\n$i++;\n}\nif($num==$sum){\necho\"<span style='color:green'>the number is perfect number!!</span>\";\n}\nelse if($num>$sum){\necho\"<span style='color:blue'>the number is Deficient Number!!</span>\";\n}\nelse\n{\necho\"<span style='color:red'>The Number is Abundant Number!!</span>\";\n}\n}\n?>"
+  },
+  {
+    "id": "6",
+    "title": "Login Page with Database",
+    "filename": "Pgm6.html / login.php",
+    "code": "<!-- Pgm6.html -->\n<html>\n<head>\n<title>Login Page</title>\n</head>\n<body style=\"background-image:url(loginimage.jpg);background-repeat: no-repeat\">\n<form action=\"login.php\" method=get>\n<table width=100%>\n<tr>\n<td colspan=2 align=center><h3>Login Page</h3></td>\n</tr>\n<tr>\n<td width=50% align=right><h4>User Name*</h4></td>\n<td width=50%><input type=text name=name required\nautofocus></td>\n</tr>\n<tr>\n<td align=right><h4>Password*</h4></td>\n<td><input type=Password name=pwd required></td>\n</tr>\n<tr>\n<td colspan=2 align=center><input type=submit value='LOGIN'\nname=login></td>\n</tr>\n</table> </form>\n</body>\n</html>\n\n<!-- login.php -->\n<?php\n$user=$_GET['name'];\n$password=$_GET['pwd'];\n$db_handle=pg_connect(\"host=localhost dbname=sngc user=postgres\npassword=root\");\nif(!$db_handle)\necho\"An error occured.\";\n$query=\"SELECT username,password FROM login where username='$user'\";\n$result=pg_query($db_handle,$query);\nif(!$result)\necho\"An error occured.\";\n$row=pg_fetch_row($result);\nif(pg_num_rows($result)==0)\necho\"<h3>Sorry!you are not currently registered with us!\\n</h3>\";\nelse\nif($row[1]!=$password)\necho\"<h3>Hello $user!you have entered wrong password\\nPlease go\nback and try again.</h3>\";\nelse\necho \"<h3>Hello $user ! Welcome back.\\n You are Successfully\nLogged In.</h3>\";\n?>\n<hr><input type=button name=click value=\"Go Back\"\nonClick=\"parent.location='Pgm6.html'\">"
+  },
+  {
+    "id": "7",
+    "title": "Last Visited Cookie",
+    "filename": "Pgm7.php",
+    "code": "<!DOCTYPE html>\n<html>\n<head><title>Cookie Example</title></head>\n<body>\n<?php\nif(isset($_COOKIE['lastvisit']))\necho\"<h3>Hi $_COOKIE[username]!Welcome Back!<br>You last visit from on\n$_COOKIE[lastvisit]</h3>\";\nelse {\nsetcookie('username','Rahul',time()+30*24*60*60);\ndate_default_timezone_set('Asia/Calcutta');\nsetcookie('lastvisit',date(\"d-m-Y H:i:s\"));\n}\n?>\n</body></html>"
+  },
+  {
+    "id": "8",
+    "title": "Fruit Types (Selection Box)",
+    "filename": "Pgm8.html / Pgm8.php",
+    "code": "<!-- Pgm8.html -->\n<html>\n<body>\n<form action=\"Pgm8.php\">\n<h3>Types of Fruits.Select one</h3>\n<select name=select>\n<optgroup label=\"Simple Fruits\">\n<option value=\"Cherry\">Cherry</option>\n<option value=\"Apple\">Apple</option>\n<option value=\"Orange\">Orange</option>\n</optgroup>\n<optgroup label=\"Multiple Fruits\">\n<option value=\"Mullberry\">Mullberry</option>\n<option value=\"Jackfruit\">Jackfurit</option>\n<option value=\"Grapes\"></option>\n</optgroup>\n</select>\n<input type=submit name=submit value='Submit Your Choice'>\n</form>\n</body>\n</html>\n\n<!-- Pgm8.php -->\n<?php\necho \"<h3>Hi! we think alike,just like you,I also like\n$_GET[select]</h3> \"\n?>\n<hr><input type=button name=click value=\"SELECT ANOTHER\"\nonclick=\"parent.location='Pgm8.html'\">"
+  },
+  {
+    "id": "9",
+    "title": "Array Operations (Multiple Select)",
+    "filename": "Pgm9.html / arrayOperation.php",
+    "code": "<!-- Pgm9.html -->\n<html>\n<body>\n<form action=\"arrayOperation.php\" method=\"POST\">\n<h3>Select some fruits names to create an array</h3>\n<select name=fruits[] size=10 multiple required autofocus>\n<option value=\"Mango\">Mango</option>\n<option value=\"Banana\">Banana</option>\n<option value=\"Grape\">Grape</option>\n<option value=\"Dates\">Dates</option>\n<option value=\"Orange\">Orange</option>\n<option value=\"Cherry\">Cherry</option>\n</select><br><br>\n<input type=submit name=submit value='Submit Your Array'>\n</form>\n</body>\n</html>\n\n<!-- arrayOperation.php -->\n<?php\n$names=array();\nforeach($_POST['fruits']as$fruit)\n$names[$fruit]=$fruit;\n$count=count($names);\necho\"<br><br><em><strong>Your fruits array has '$count' fruits.They\nare:</strong></em><br>\";\nforeach($names as $fruit)\necho\"$fruit&nbsp\";\nsort($names);\necho\"<br><br><em><strong>Your fruits array in SORTED ORDER\nis:</strong></em><br>\";\nforeach($names as $fruit)\necho\"$fruit&nbsp\";\narray_unique($names);\necho\"<br><br><em><strong>Unique elements of FRUITS array\nare:</strong></em><br>\";\nforeach($names as $fruit)\necho\"$fruit&nbsp\";\n$last=array_pop($names);\necho\"<br><br><em><strong>After removing the last element '$last' of fruits\nis</strong></em><br>\";\nforeach($names as $fruit)\necho\"$fruit&nbsp\";\nrsort($names);\necho\"<br><br><em><strong>Your FRUITS array in REVERSE ORDER\nis:</strong></em><br>\";\nforeach($names as $fruit)\necho\"$fruit&nbsp\";\n$no=$count-1;\necho\"<br><br><em><strong>Result after search element '$fruit' in givun\narray:</strong></em><br>\";\nif(in_array(\"$fruit\",$names,TRUE))\n{ echo\"Search element found in array<br>\"; }\nElse { echo\"Search element not found in array<br>\"; }\n?>\n<hr><input type=\"button\" name=\"click\" value=\"SELECT ANOTHER\"\nonclick=\"parent.location=Pgm9.html'\">"
+  },
+  {
+    "id": "10",
+    "title": "Student Marklist (Database)",
+    "filename": "Pgm10.html / marklist.php",
+    "code": "<!-- Pgm10.html -->\n<html>\n<body>\n<form action=\"marklist.php\" method=\"get\">\n<table width=100%>\n<tr>\n<td colspan=2 align=center><img src='CU.png' width=70\nheight=70 alt='Univesity Emblem'><br><strong>University of Calicut</strong></td>\n</tr>\n<tr>\n<td width=50% align=right><h4>Examination Register\nNumber*</h4></td>\n<td width=50%><input type=text name=regno required\nautofocus></td>\n</tr>\n<tr>\n<td colspan=2 align=center><input type=Submit\nvalue=\"SUBMIT\" name=login></td>\n</tr>\n</table>\n</form></body>\n</html>\n\n<!-- marklist.php -->\n<?php\nfunction grade($tmark)\n{\nif($tmark>=90)$gr='A+';\nelse if($tmark>=80)$gr='A';\nelse if($tmark>=70)$gr='B';\nelse if($tmark>=60)$gr='C';\nelse if($tmark>=50)$gr='D';\nelse if($tmark>=40)$gr='P';\nelse $gr='F';\nreturn $gr;\n}\n$regno=$_GET['regno'];\n$db_handle=pg_connect(\"host=localhost dbname=sngc user=postgres\npassword=root\");\nif(!$db_handle)\necho\"An error occured.\";\n$query=\"SELECT * from student where rollno='$regno'\";\n$result=pg_query($db_handle,$query);\nif(!$result)\necho\"An error occured.\";\nif(pg_affected_rows($result)==0)\necho \"<h3>Sorry! Register Number Does not Exist!\\n Please go back to try\nagain!</h3>\";\nelse{\n$result=pg_query($db_handle,$query);\n$row=pg_fetch_assoc($result);\n// ... (rest of processing and table generation) ...\necho \"<center><h1>UNIVERSITY OF CALICUT - MARKLIST</h1></center>\";\n}\n?>"
+  }
+]
