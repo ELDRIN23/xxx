@@ -4,6 +4,12 @@ import './index.css';
 
 function App() {
   const [category, setCategory] = useState('java');
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredPrograms = programs[category].filter(prog => 
+    prog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    prog.code.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="container">
@@ -12,25 +18,48 @@ function App() {
         <p className="subtitle">Extracted Lab Programs for Quick Reference</p>
       </header>
 
+      <div className="search-container">
+        <div className="search-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </div>
+        <input 
+          type="text" 
+          className="search-input" 
+          placeholder={`Search ${category} programs...`}
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
+
       <div className="tabs">
         <button 
           className={`tab-btn ${category === 'java' ? 'active' : ''}`}
-          onClick={() => setCategory('java')}
+          onClick={() => { setCategory('java'); setSearchTerm(''); }}
         >
           Java Programs
         </button>
         <button 
           className={`tab-btn ${category === 'php' ? 'active' : ''}`}
-          onClick={() => setCategory('php')}
+          onClick={() => { setCategory('php'); setSearchTerm(''); }}
         >
           PHP Programs
         </button>
       </div>
 
       <div className="program-list">
-        {programs[category].map((prog, index) => (
-          <ProgramCard key={`${category}-${index}`} program={prog} />
-        ))}
+        {filteredPrograms.length > 0 ? (
+          filteredPrograms.map((prog, index) => (
+            <ProgramCard key={`${category}-${index}`} program={prog} />
+          ))
+        ) : (
+          <div className="no-results">
+            <h3>No programs found</h3>
+            <p>Try searching for a different keyword or check your spelling.</p>
+          </div>
+        )}
       </div>
     </div>
   );
