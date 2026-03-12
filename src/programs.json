@@ -1,0 +1,141 @@
+{
+  "java": [
+    {
+      "id": "1",
+      "title": "Distance Between Two Points",
+      "code": "import java.util.*;\nclass Distance{\npublic static void main(String args[]){\nScanner s=new Scanner(System.in);\nint x1=s.nextInt();\nint y1=s.nextInt();\nint x2=s.nextInt();\nint y2=s.nextInt();\ndouble d=Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1));\nSystem.out.println(\"Distance=\"+d);\n}\n}"
+    },
+    {
+      "id": "2",
+      "title": "Arithmetic Using Command Line",
+      "code": "class Calc{\npublic static void main(String args[]){\nint x=Integer.parseInt(args[0]);\nint y=Integer.parseInt(args[1]);\nSystem.out.println(\"Sum=\"+(x+y));\nSystem.out.println(\"Diff=\"+(x-y));\nSystem.out.println(\"Product=\"+(x*y));\nSystem.out.println(\"Division=\"+(x/y));\nSystem.out.println(\"Remainder=\"+(x%y));\n}\n}"
+    },
+    {
+      "id": "3",
+      "title": "Fibonacci Series",
+      "code": "import java.util.*;\nclass Fibonacci{\npublic static void main(String args[]){\nScanner s=new Scanner(System.in);\nint n=s.nextInt();\nint a=0;\nint b=1;\nint c;\nwhile(a<=n){\nSystem.out.print(a+\" \");\nc=a+b;\na=b;\nb=c;\n}\n}\n}"
+    },
+    {
+      "id": "4",
+      "title": "Armstrong Numbers in Range",
+      "code": "import java.util.*;\nclass Armstrong{\npublic static void main(String args[]){\nScanner s=new Scanner(System.in);\nint start=s.nextInt();\nint end=s.nextInt();\nfor(int i=start;i<=end;i++){\nint sum=0;\nint n=i;\nwhile(n>0){\nint r=n%10;\nsum=sum+r*r*r;\nn=n/10;\n}\nif(sum==i)\nSystem.out.println(i);\n}\n}\n}"
+    },
+    {
+      "id": "5",
+      "title": "Triangle Type and Area",
+      "code": "import java.util.*;\nclass Triangle{\npublic static void main(String args[]){\nScanner s=new Scanner(System.in);\nint a=s.nextInt();\nint b=s.nextInt();\nint c=s.nextInt();\nif(a==b && b==c)\nSystem.out.println(\"Equilateral\");\nelse if(a==b || b==c || a==c)\nSystem.out.println(\"Isosceles\");\nelse\nSystem.out.println(\"Scalene\");\ndouble p=(a+b+c)/2.0;\ndouble area=Math.sqrt(p*(p-a)*(p-b)*(p-c));\nSystem.out.println(\"Area=\"+area);\n}\n}"
+    },
+    {
+      "id": "6",
+      "title": "Smallest, Largest, Second Largest",
+      "code": "import java.util.*;\nclass SmallLarge{\npublic static void main(String args[]){\nScanner s=new Scanner(System.in);\nint n=s.nextInt();\nint arr[]=new int[n];\nfor(int i=0;i<n;i++)\narr[i]=s.nextInt();\njava.util.Arrays.sort(arr);\nSystem.out.println(\"Smallest=\"+arr[0]);\nSystem.out.println(\"Largest=\"+arr[n-1]);\nSystem.out.println(\"Second Largest=\"+arr[n-2]);\n}\n}"
+    },
+    {
+      "id": "7",
+      "title": "Number Conversion",
+      "code": "import java.util.*;\nclass Conversion{\npublic static void main(String args[]){\nScanner s=new Scanner(System.in);\nint num=s.nextInt();\nSystem.out.println(\"Binary=\"+Integer.toBinaryString(num));\nSystem.out.println(\"Octal=\"+Integer.toOctalString(num));\nSystem.out.println(\"Hex=\"+Integer.toHexString(num));\n}\n}"
+    },
+    {
+      "id": "8",
+      "title": "Merge Two Arrays",
+      "code": "import java.util.*;\nclass Merge{\npublic static void main(String args[]){\nScanner s=new Scanner(System.in);\nint n=s.nextInt();\nint m=s.nextInt();\nint a[]=new int[n];\nint b[]=new int[m];\nint c[]=new int[n+m];\nfor(int i=0;i<n;i++) a[i]=s.nextInt();\nfor(int i=0;i<m;i++) b[i]=s.nextInt();\nfor(int i=0;i<n;i++) c[i]=a[i];\nfor(int i=0;i<m;i++) c[n+i]=b[i];\nfor(int i=0;i<n+m;i++) System.out.print(c[i]+\" \");\n}\n}"
+    },
+    {
+      "id": "9",
+      "title": "Keyboard Event Applet",
+      "code": "import java.applet.*;\nimport java.awt.*;\nimport java.awt.event.*;\npublic class KeyboardApplet extends Applet implements KeyListener{\nString msg=\"\";\npublic void init(){\naddKeyListener(this);\n}\npublic void keyTyped(KeyEvent e){\nmsg=\"Typed:\"+e.getKeyChar();\nrepaint();\n}\npublic void keyPressed(KeyEvent e){\nmsg=\"Pressed:\"+e.getKeyChar();\nrepaint();\n}\npublic void keyReleased(KeyEvent e){\nmsg=\"Released:\"+e.getKeyChar();\nrepaint();\n}\npublic void paint(Graphics g){\ng.drawString(msg,50,100);\n}\n}"
+    },
+    {
+      "id": "10",
+      "title": "Student Result (Inheritance)",
+      "code": "import java.util.*;\nclass Student{\nString name;\nint roll;\nvoid read(){\nScanner s=new Scanner(System.in);\nname=s.nextLine();\nroll=s.nextInt();\n}\nvoid display(){\nSystem.out.println(name+\" \"+roll);\n}\n}\nclass Result extends Student{\nint total=0;\nint mark;\nvoid readMarks(){\nScanner s=new Scanner(System.in);\nfor(int i=0;i<5;i++){\nmark=s.nextInt();\ntotal=total+mark;\n}\n}\nvoid show(){\ndisplay();\nSystem.out.println(\"Total=\"+total);\n}\n}\nclass Main{\npublic static void main(String args[]){\nResult r=new Result();\nr.read();\nr.readMarks();\nr.show();\n}\n}"
+    },
+    {
+      "id": "11",
+      "title": "Matrix Trace and Transpose",
+      "code": "import java.util.*;\nclass Matrix{\npublic static void main(String args[]){\nScanner s=new Scanner(System.in);\nint r=s.nextInt();\nint c=s.nextInt();\nint a[][]=new int[r][c];\nfor(int i=0;i<r;i++)\nfor(int j=0;j<c;j++)\na[i][j]=s.nextInt();\nint trace=0;\nif(r==c){\nfor(int i=0;i<r;i++)\ntrace+=a[i][i];\nSystem.out.println(\"Trace=\"+trace);\n}\nfor(int i=0;i<c;i++){\nfor(int j=0;j<r;j++)\nSystem.out.print(a[j][i]+\" \");\nSystem.out.println();\n}\n}\n}"
+    },
+    {
+      "id": "12",
+      "title": "Sum of Digits and Reverse",
+      "code": "import java.util.*;\nclass Number{\nvoid sumreverse(){\nScanner s=new Scanner(System.in);\nint n=s.nextInt();\nint sum=0;\nint rev=0;\nwhile(n>0){\nint r=n%10;\nsum=sum+r;\nrev=rev*10+r;\nn=n/10;\n}\nSystem.out.println(\"Sum=\"+sum);\nSystem.out.println(\"Reverse=\"+rev);\n}\n}\nclass Main{\npublic static void main(String args[]){\nNumber obj=new Number();\nobj.sumreverse();\n}\n}"
+    },
+    {
+      "id": "13",
+      "title": "Constructor Order in Inheritance",
+      "code": "class A{\nA(){\nSystem.out.println(\"A constructor\");\n}\n}\nclass B extends A{\nB(){\nSystem.out.println(\"B constructor\");\n}\n}\nclass C extends B{\nC(){\nSystem.out.println(\"C constructor\");\n}\n}\nclass Main{\npublic static void main(String args[]){\nC obj=new C();\n}\n}"
+    },
+    {
+      "id": "14",
+      "title": "Count Objects using Static",
+      "code": "class Sample{\nstatic int count=0;\nSample(){\ncount++;\n}\npublic static void main(String args[]){\nnew Sample();\nnew Sample();\nnew Sample();\nSystem.out.println(\"Objects=\"+count);\n}\n}"
+    },
+    {
+      "id": "15",
+      "title": "Volume using Function Overloading",
+      "code": "import java.util.*;\nclass Volume{\ndouble volume(double s){\nreturn s*s*s;\n}\ndouble volume(double l,double w,double h){\nreturn l*w*h;\n}\ndouble volume(double r,double h){\nreturn Math.PI*r*r*h;\n}\n}\nclass Main{\npublic static void main(String args[]){\nScanner s=new Scanner(System.in);\nVolume v=new Volume();\ndouble side=s.nextDouble();\nSystem.out.println(\"Cube=\"+v.volume(side));\ndouble l=s.nextDouble();\ndouble w=s.nextDouble();\ndouble h=s.nextDouble();\nSystem.out.println(\"Box=\"+v.volume(l,w,h));\ndouble r=s.nextDouble();\ndouble ch=s.nextDouble();\nSystem.out.println(\"Cylinder=\"+v.volume(r,ch));\n}\n}"
+    },
+    {
+      "id": "16",
+      "title": "Sort Numbers (Bubble Sort)",
+      "code": "import java.util.*;\nclass Sort{\npublic static void main(String args[]){\nScanner s=new Scanner(System.in);\nint n=s.nextInt();\nint a[]=new int[n];\nfor(int i=0;i<n;i++)\na[i]=s.nextInt();\nfor(int i=0;i<n;i++)\nfor(int j=0;j<n-i-1;j++)\nif(a[j]>a[j+1]){\nint t=a[j];\na[j]=a[j+1];\na[j+1]=t;\n}\nfor(int i=0;i<n;i++)\nSystem.out.print(a[i]+\" \");\n}\n}"
+    },
+    {
+      "id": "17",
+      "title": "Odd and Even Numbers using Threads",
+      "code": "import java.util.*;\nclass Odd implements Runnable{\nint n;\nOdd(int n){this.n=n;}\npublic void run(){\nfor(int i=1;i<=n;i++)\nif(i%2!=0)\nSystem.out.println(\"Odd \"+i);\n}\n}\nclass Even implements Runnable{\nint n;\nEven(int n){this.n=n;}\npublic void run(){\nfor(int i=1;i<=n;i++)\nif(i%2==0)\nSystem.out.println(\"Even \"+i);\n}\n}\nclass Main{\npublic static void main(String args[]){\nScanner s=new Scanner(System.in);\nint n=s.nextInt();\nThread t1=new Thread(new Odd(n));\nThread t2=new Thread(new Even(n));\nt1.start();\nt2.start();\n}\n}"
+    }
+  ],
+  "php": [
+    {
+      "id": "1",
+      "title": "Armstrong Number",
+      "code": "<html>\n<body>\n<form method=\"post\">\nEnter Number:\n<input type=\"text\" name=\"n\">\n<input type=\"submit\">\n</form>\n<?php\nif($_POST){\n$n=$_POST['n'];\n$sum=0;\n$t=$n;\nwhile($t>0){\n$r=$t%10;\n$sum=$sum+$r*$r*$r;\n$t=$t/10;\n}\nif($sum==$n)\necho \"Armstrong Number\";\nelse\necho \"Not Armstrong\";\n}\n?>\n</body>\n</html>"
+    },
+    {
+      "id": "2",
+      "title": "Fibonacci Series",
+      "code": "<html>\n<body>\n<form method=\"post\">\nEnter Limit:\n<input type=\"text\" name=\"n\">\n<input type=\"submit\">\n</form>\n<?php\nif($_POST){\n$n=$_POST['n'];\n$a=0;\n$b=1;\necho $a.\" \".$b.\" \";\nwhile($a+$b <= $n){\n$c=$a+$b;\necho $c.\" \";\n$a=$b;\n$b=$c;\n}\n}\n?>\n</body>\n</html>"
+    },
+    {
+      "id": "3",
+      "title": "String Reverse (HTML)",
+      "code": "<html>\n<body>\n<form action=\"reverse.php\" method=\"post\">\nEnter String:\n<input type=\"text\" name=\"s\">\n<input type=\"submit\">\n</form>\n</body>\n</html>"
+    },
+    {
+      "id": "3",
+      "title": "String Reverse (PHP)",
+      "code": "<?php\n$s=$_POST['s'];\n$len=strlen($s);\nfor($i=$len-1;$i>=0;$i--)\necho $s[$i];\n?>"
+    },
+    {
+      "id": "4",
+      "title": "Perfect / Deficient / Abundant Number",
+      "code": "<html>\n<body>\n<form method=\"post\">\nEnter Number:\n<input type=\"text\" name=\"n\">\n<input type=\"submit\">\n</form>\n<?php\nif($_POST){\n$n=$_POST['n'];\n$sum=0;\nfor($i=1;$i<$n;$i++){\nif($n%$i==0)\n$sum=$sum+$i;\n}\nif($sum==$n)\necho \"Perfect Number\";\nelseif($sum<$n)\necho \"Deficient Number\";\nelse\necho \"Abundant Number\";\n}\n?>\n</body>\n</html>"
+    },
+    {
+      "id": "5",
+      "title": "Fruit Selection (HTML)",
+      "code": "<html>\n<body>\n<form action=\"fruit.php\">\n<select name=\"fruit\">\n<option>Apple</option>\n<option>Orange</option>\n<option>Mango</option>\n</select>\n<input type=\"submit\">\n</form>\n</body>\n</html>"
+    },
+    {
+      "id": "5",
+      "title": "Fruit Selection (PHP)",
+      "code": "<?php\necho \"You selected \".$_GET['fruit'];\n?>"
+    },
+    {
+      "id": "6",
+      "title": "Array Operations (HTML)",
+      "code": "<html>\n<body>\n<form action=\"array.php\" method=\"post\">\n<select name=\"fruit[]\" multiple>\n<option>Mango</option>\n<option>Apple</option>\n<option>Orange</option>\n<option>Banana</option>\n</select>\n<input type=\"submit\">\n</form>\n</body>\n</html>"
+    },
+    {
+      "id": "6",
+      "title": "Array Operations (PHP)",
+      "code": "<?php\n$a=$_POST['fruit'];\nforeach($a as $v)\necho $v.\" \";\nsort($a);\necho \"<br>Sorted:<br>\";\nforeach($a as $v)\necho $v.\" \";\n$a=array_unique($a);\necho \"<br>Unique:<br>\";\nforeach($a as $v)\necho $v.\" \";\narray_pop($a);\necho \"<br>After Remove:<br>\";\nforeach($a as $v)\necho $v.\" \";\nrsort($a);\necho \"<br>Reverse:<br>\";\nforeach($a as $v)\necho $v.\" \";\nif(in_array(\"Apple\",$a))\necho \"<br>Apple Found\";\n?>"
+    },
+    {
+      "id": "7",
+      "title": "Cookies Program",
+      "code": "<html>\n<body>\n<?php\nif(isset($_COOKIE['lastvisit']))\n{\necho \"Last Visit: \".$_COOKIE['lastvisit'];\n}\nelse\n{\necho \"First Visit\";\n}\ndate_default_timezone_set(\"Asia/Kolkata\");\nsetcookie(\"lastvisit\", date(\"d-m-Y H:i:s\"));\n?>\n</body>\n</html>"
+    }
+  ]
+}
