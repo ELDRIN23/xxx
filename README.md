@@ -1,4 +1,4 @@
-# Code Repository (OPERATION LBA06(01))
+# Code Repository (OPERATION LAB-06(01))
 
 A collection of public domain lab programs and snippets for educational reference.
 
