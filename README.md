@@ -1,4 +1,4 @@
-# Code Repository
+# Code Repository (OPERATION LAB-06(01))
 
 A collection of public domain lab programs and snippets for educational reference.
 
@@ -11,3 +11,8 @@ A collection of public domain lab programs and snippets for educational referenc
 1. `npm install`
 2. `npm run dev`
 
+hosted link: https://xxx60.vercel.app/
+
+used for easy code implementations and for quick learning purpose
+for BCA,BSC CS 6th semester students
+consist of JAVA,PHP programs
